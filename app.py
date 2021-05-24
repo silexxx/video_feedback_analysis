@@ -39,3 +39,85 @@ plt.axis("off")
 plt.tight_layout(pad = 0)
   
 st.pyplot()
+
+
+
+import ast 
+
+age=""
+dominant_emotion=""
+dominant_race=""
+gender=""
+
+for i in df.frames_analysis:
+#     print(i)
+    res = ast.literal_eval(i) 
+#     print(res["age"])
+#     print(res["dominant_race"])
+#     print(res["dominant_emotion"])
+#     print(res["gender"])
+    
+    age=age+" "
+    dominant_emotion=dominant_emotion+" "
+    dominant_race=dominant_race+" "
+    gender=gender+" "
+    
+    age = age+' '.join([str(elem) for elem in res["age"]]) 
+    dominant_emotion = dominant_emotion+' '.join([str(elem) for elem in res["dominant_emotion"]]) 
+    dominant_race = dominant_race+' '.join([str(elem) for elem in res["dominant_race"]]) 
+    gender = gender+' '.join([str(elem) for elem in res["gender"]])
+
+
+st.write("age:")
+wordcloud = WordCloud(width = 800, height = 800,
+                background_color ='black',
+                min_font_size = 10,include_numbers=True).generate(age)
+  
+# plot the WordCloud image                       
+plt.figure(figsize = (8, 8), facecolor = None)
+plt.imshow(wordcloud)
+plt.axis("off")
+plt.tight_layout(pad = 0)
+  
+st.pyplot()
+
+st.write("emotion:")
+wordcloud = WordCloud(width = 800, height = 800,
+                background_color ='black',
+                min_font_size = 10,include_numbers=True).generate(dominant_emotion)
+  
+# plot the WordCloud image                       
+plt.figure(figsize = (8, 8), facecolor = None)
+plt.imshow(wordcloud)
+plt.axis("off")
+plt.tight_layout(pad = 0)
+  
+st.pyplot()
+
+
+st.write("race:")
+wordcloud = WordCloud(width = 800, height = 800,
+                background_color ='black',
+                min_font_size = 10,include_numbers=True).generate(dominant_race)
+  
+# plot the WordCloud image                       
+plt.figure(figsize = (8, 8), facecolor = None)
+plt.imshow(wordcloud)
+plt.axis("off")
+plt.tight_layout(pad = 0)
+  
+st.pyplot()
+
+
+st.write("gender:")
+wordcloud = WordCloud(width = 800, height = 800,
+                background_color ='black',
+                min_font_size = 10,include_numbers=True).generate(gender)
+  
+# plot the WordCloud image                       
+plt.figure(figsize = (8, 8), facecolor = None)
+plt.imshow(wordcloud)
+plt.axis("off")
+plt.tight_layout(pad = 0)
+  
+st.pyplot()
